@@ -1,0 +1,7 @@
+{
+  "name": "auth0-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
