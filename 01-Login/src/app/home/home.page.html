@@ -6,8 +6,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <p *ngIf="auth.loading" text-center>Loading...</p>
+<ion-content class="ion-padding">
+  <p *ngIf="auth.loading" class="ion-text-center">Loading...</p>
   <ng-template [ngIf]="!auth.loading">
     <!-- Not loading, not logged in: show login button -->
     <ion-button
