@@ -73,10 +73,10 @@ export class AuthService {
 
     this.safariViewController.isAvailable()
       .then((available: boolean) => {
-        const domain = AUTH_CONFIG.domain;
+        const auth0Domain = AUTH_CONFIG.domain;
         const clientId = AUTH_CONFIG.clientId;
         const pkgId = AUTH_CONFIG.packageIdentifier;
-        let url = `https://${domain}/v2/logout?client_id=${clientId}&returnTo=${pkgId}://${domain}/cordova/${pkgId}/callback`;
+        let url = `https://${auth0Domain}/v2/logout?client_id=${clientId}&returnTo=${pkgId}://${auth0Domain}/cordova/${pkgId}/callback`;
         if (available) {
           this.safariViewController.show({
             url: url
