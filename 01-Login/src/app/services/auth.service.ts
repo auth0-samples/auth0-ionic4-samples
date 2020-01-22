@@ -20,8 +20,8 @@ export class AuthService {
 
   constructor(
     public zone: NgZone,
+    public safariViewController: SafariViewController,
     private storage: Storage,
-    private safariViewController: SafariViewController
   ) {
     this.storage.get('profile').then(user => this.user = user);
     this.storage.get('access_token').then(token => this.accessToken = token);
