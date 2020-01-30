@@ -64,13 +64,9 @@ export class AuthService {
   }
 
   logout() {
-    this.storage.remove('profile');
-    this.storage.remove('access_token');
-    this.storage.remove('expires_at');
     this.accessToken = null;
     this.user = null;
     this.loggedIn = false;
-
     this.safariViewController.isAvailable()
       .then((available: boolean) => {
         const auth0Domain = AUTH_CONFIG.domain;
@@ -83,8 +79,15 @@ export class AuthService {
           })
           .subscribe((result: any) => {
               if(result.event === 'opened') console.log('Opened');
-              else if(result.event === 'loaded') console.log('Loaded');
               else if(result.event === 'closed') console.log('Closed');
+
+              if (result.event === 'loaded') {
+                console.log('Loaded');
+                this.storage.remove('profile');
+                this.storage.remove('access_token');
+                this.storage.remove('expires_at');
+                this.safariViewController.hide();
+              }
             },
             (error: any) => console.error(error)
           );
